@@ -12,7 +12,9 @@ return new class extends Migration
         Schema::create('habilidades', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
+            $table->string('categoria');
             $table->text('descricao')->nullable();
+
             $table->timestamps();
         });
     }
