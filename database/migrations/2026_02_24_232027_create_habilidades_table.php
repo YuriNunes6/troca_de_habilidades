@@ -14,7 +14,6 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('categoria');
             $table->text('descricao')->nullable();
-
             $table->timestamps();
         });
     }

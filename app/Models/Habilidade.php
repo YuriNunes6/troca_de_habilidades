@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Habilidade extends Model
 {
     use HasFactory;
+
+    protected $filable = [
+
+        'nome',
+        'categoria',
+        'descricao',
+
+    ];
 }
