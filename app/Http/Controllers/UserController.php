@@ -30,13 +30,17 @@ class UserController extends Controller
     }
 
     public function index() {
-        $users = User::where('is_admin', false)->with('skills')->paginate(10);
-        return view('users.index', compact('users'));
+
+       $users = User::where('role','user')
+        ->with('skills')
+        ->paginate(10);
+
+        return view('user.users.index', compact('users'));
     }
 
     public function show(User $user) {
         $user->load('skills', 'avaliacoes');
-        return view('users.show', compact('user'));
+        return view('user.user.show', compact('user'));
     }
 
     public function destroy(string $id)

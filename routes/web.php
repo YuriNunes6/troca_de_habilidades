@@ -95,6 +95,7 @@ Route::middleware(['auth','admin'])
     // Usuários (admin)
     // ========================
     Route::get('users', [UserController::class,'index'])->name('users.index');
+    Route::get('admins', [AdminController::class,'index'])->name('admins.index');
 
     // ========================
     // Skills

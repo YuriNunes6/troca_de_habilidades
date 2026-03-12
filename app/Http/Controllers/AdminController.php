@@ -7,6 +7,8 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
+
+
     public function showCreate()
     {
         return view('admins.create');
@@ -24,7 +26,7 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'is_admin' => true,
+            'role' => 'admin',
         ]);
 
         return redirect()->route('admins.index')->with('success', 'Admin criado com sucesso!');
@@ -32,13 +34,14 @@ class AdminController extends Controller
 
     public function index()
     {
-        $admins = User::where('is_admin', true)->paginate(10);
-        return view('admins.index', compact('admins'));
+        $admins = User::where('role', 'admin')->paginate(10);
+
+        return view('admin.users.index', compact('admins'));
     }
 
     public function edit(User $admin)
     {
-        return view('admins.edit', compact('admin'));
+        return view('admin.users.edit', compact('admin'));
     }
 
     public function update(Request $request, User $admin)
@@ -61,4 +64,5 @@ class AdminController extends Controller
         $admin->delete();
         return redirect()->route('admins.index')->with('success', 'Admin removido com sucesso!');
     }
+
 }

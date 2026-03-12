@@ -68,7 +68,7 @@
                     <label>Sua principal Habilidade</label>
                     <div class="input-wrapper">
                         <i class="bi bi-star"></i>
-                        <select name="skills" required>
+                        <select name="skills">
                             <option value="" selected disabled>O que você domina?</option>
                             @foreach($skills as $skill)
                                 <option value="{{ $skill->id }}">{{ $skill->name }}</option>
